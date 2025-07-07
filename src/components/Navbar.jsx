@@ -17,10 +17,10 @@ export default function Navbar() {
     { id: 5, newsName: "Times Of India", path: "the-times-of-india" },
   ];
 
-  const handleSearch = () => {
-    navigate(`/search/${query}`);
-    setQuery("");
-  };
+  // const handleSearch = () => {
+  //   navigate(`/search/${query}`);
+  //   setQuery("");
+  // };
 
   const handleLogin = () => navigate("/login");
   const handleUserProfile = () => navigate("/profile");
@@ -36,7 +36,7 @@ export default function Navbar() {
           {newsItems.map((item) => (
             <li
               key={item.id}
-              onClick={() => navigate(`/source/${item.path}`)}
+              // onClick={() => navigate(`/source/${item.path}`)}
               className="cursor-pointer hover:text-orange-100"
             >
               {item.newsName}
@@ -50,12 +50,12 @@ export default function Navbar() {
               type="text"
               placeholder="Search..."
               className="px-3 py-1 outline-none text-black"
-              onChange={(e) => setQuery(e.target.value)}
-              value={query}
+              // onChange={(e) => setQuery(e.target.value)}
+              // value={query}
             />
             <button
               className="bg-orange-600 text-white px-3 hover:bg-orange-700"
-              onClick={handleSearch}
+              // onClick={handleSearch}
             >
               <FaSearch />
             </button>
@@ -109,12 +109,12 @@ export default function Navbar() {
               type="text"
               placeholder="Search..."
               className="w-full px-3 py-1 outline-none text-black"
-              onChange={(e) => setQuery(e.target.value)}
-              value={query}
+              // onChange={(e) => setQuery(e.target.value)}
+              // value={query}
             />
             <button
               className="bg-orange-600 text-white px-3 hover:bg-orange-700"
-              onClick={handleSearch}
+              // onClick={handleSearch}
             >
               <FaSearch />
             </button>
