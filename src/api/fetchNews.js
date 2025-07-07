@@ -12,3 +12,17 @@ export const fetchNewsBySource = async (source) => {
     console.log("Error in fetching news by source -", error.message);
   }
 };
+
+export const fetchTopNews = async () => {
+  try {
+    const response = await fetch(
+      `https://newsapi.org/v2/top-headlines?language=en&pageSize=10&apiKey=${API_KEY}`
+    );
+    const data = await response.json();
+    console.log("🌍 Top Global News:", data.articles);
+    return data.articles;
+  } catch (error) {
+    console.log("Error fetching top news:", error.message);
+    return [];
+  }
+};

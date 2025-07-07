@@ -6,13 +6,22 @@ import Login from "../pages/Login";
 import Navbar from "../components/Navbar";
 import ProtectedRoutes from "../context/ProtectedRoute";
 import NewsSource from "../pages/NewsSource";
+import TopNews from "../components/TopNews";
 const AppRoutes = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
+
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <TopNews /> <Home />
+              </>
+            }
+          />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route
