@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Navbar from "../components/Navbar";
 import ProtectedRoutes from "../context/ProtectedRoute";
+import NewsSource from "../pages/NewsSource";
 const AppRoutes = () => {
   return (
     <>
@@ -16,9 +17,11 @@ const AppRoutes = () => {
           <Route path="/login" element={<Login />} />
           <Route
             path="/source/:source"
-            element={<ProtectedRoutes>
-              
-            </ProtectedRoutes>}
+            element={
+              <ProtectedRoutes>
+                <NewsSource />
+              </ProtectedRoutes>
+            }
           />
         </Routes>
       </BrowserRouter>

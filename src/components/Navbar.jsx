@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { FaBars, FaTimes, FaUser, FaSearch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext, useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,16 +17,18 @@ export default function Navbar() {
     { id: 5, newsName: "Times Of India", path: "the-times-of-india" },
   ];
 
-  // const handleSearch = () => {
-  //   navigate(`/search/${query}`);
-  //   setQuery("");
-  // };
+  const handleSearch = () => {
+    if (query.trim()) {
+      navigate(`/search/${query}`);
+      setQuery("");
+    }
+  };
 
   const handleLogin = () => navigate("/login");
   const handleUserProfile = () => navigate("/profile");
 
   return (
-    <nav className="bg-orange-500 shadow sticky top-0 z-50">
+    <nav className="bg-orange-500 sticky top-0 z-50 shadow">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="text-xl font-bold text-white">
           NewsNow
@@ -36,8 +38,8 @@ export default function Navbar() {
           {newsItems.map((item) => (
             <li
               key={item.id}
-              // onClick={() => navigate(`/source/${item.path}`)}
               className="cursor-pointer hover:text-orange-100"
+              onClick={() => navigate(`/source/${item.path}`)}
             >
               {item.newsName}
             </li>
@@ -45,17 +47,17 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden md:flex items-center gap-4">
-          <div className="flex border border-white rounded-md overflow-hidden bg-white">
+          <div className="flex bg-white rounded-md overflow-hidden border border-white">
             <input
               type="text"
               placeholder="Search..."
               className="px-3 py-1 outline-none text-black"
-              // onChange={(e) => setQuery(e.target.value)}
-              // value={query}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
             <button
+              onClick={handleSearch}
               className="bg-orange-600 text-white px-3 hover:bg-orange-700"
-              // onClick={handleSearch}
             >
               <FaSearch />
             </button>
@@ -73,7 +75,7 @@ export default function Navbar() {
           ) : (
             <button
               onClick={handleLogin}
-              className="text-sm px-3 py-1 rounded-md bg-white text-orange-600 font-semibold hover:bg-orange-100"
+              className="text-sm px-3 py-1 rounded bg-white text-orange-600 font-semibold hover:bg-orange-100"
             >
               Login
             </button>
@@ -109,12 +111,12 @@ export default function Navbar() {
               type="text"
               placeholder="Search..."
               className="w-full px-3 py-1 outline-none text-black"
-              // onChange={(e) => setQuery(e.target.value)}
-              // value={query}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
             <button
               className="bg-orange-600 text-white px-3 hover:bg-orange-700"
-              // onClick={handleSearch}
+              onClick={handleSearch}
             >
               <FaSearch />
             </button>
