@@ -7,11 +7,13 @@ import Navbar from "../components/Navbar";
 import ProtectedRoutes from "../context/ProtectedRoute";
 import NewsSource from "../pages/NewsSource";
 import TopNews from "../components/TopNews";
+import Nav2 from "../components/nav2";
 const AppRoutes = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
+        <Nav2 />
 
         <Routes>
           <Route

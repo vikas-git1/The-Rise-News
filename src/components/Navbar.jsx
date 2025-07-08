@@ -30,18 +30,23 @@ export default function Navbar() {
   return (
     <nav className="bg-orange-500 sticky top-0 z-50 shadow">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold text-white">
-          NewsNow
+        <Link
+          to="/"
+          className="hover:bg-orange-700/40 px-3 py-2 rounded-full transition text-xl font-bold text-white"
+        >
+          The Rise
         </Link>
 
-        <ul className="hidden md:flex gap-6 text-white font-medium">
+        <ul className="hidden md:flex gap-7 text-white font-semibold text-base">
           {newsItems.map((item) => (
             <li
               key={item.id}
-              className="cursor-pointer hover:text-orange-100"
+              className="cursor-pointer relative px-1 transition"
               onClick={() => navigate(`/source/${item.path}`)}
             >
-              {item.newsName}
+              <span className="hover:underline underline-offset-8 decoration-2 decoration-orange-100 transition-all duration-200">
+                {item.newsName}
+              </span>
             </li>
           ))}
         </ul>
@@ -64,18 +69,27 @@ export default function Navbar() {
           </div>
           {user ? (
             <div
-              onClick={handleUserProfile}
-              className="flex items-center cursor-pointer gap-2 text-white"
+              onClick={() => {
+                handleUserProfile();
+                setIsOpen(false);
+              }}
+              className="flex items-center gap-2 cursor-pointer hover:bg-orange-700/40 px-3 py-2 rounded-full transition"
+              title="Profile"
             >
-              <FaUser />
-              <span className="text-sm font-medium">
+              <div className="bg-orange-200  text-orange-700 rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg shadow">
+                {userProfile?.firstName?.[0]?.toUpperCase() || <FaUser />}
+              </div>
+              <span className="text-sm  whitespace-nowrap text-white font-bold">
                 Hello, {userProfile.firstName}
               </span>
             </div>
           ) : (
             <button
-              onClick={handleLogin}
-              className="text-sm px-3 py-1 rounded bg-white text-orange-600 font-semibold hover:bg-orange-100"
+              onClick={() => {
+                handleLogin();
+                setIsOpen(false);
+              }}
+              className="text-sm px-4 py-1.5 rounded-full bg-white text-orange-600 font-semibold hover:bg-orange-100 shadow transition"
             >
               Login
             </button>
