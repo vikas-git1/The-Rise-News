@@ -10,6 +10,7 @@ export const fetchNewsBySource = async (source) => {
     return data.articles;
   } catch (error) {
     console.log("Error in fetching news by source -", error.message);
+    return [];
   }
 };
 
@@ -23,6 +24,19 @@ export const fetchTopNews = async () => {
     return data.articles;
   } catch (error) {
     console.log("Error fetching top news:", error.message);
+    return [];
+  }
+};
+
+export const fetchNewsByQuery = async (query, page) => {
+  try {
+    const response = await fetch(
+      `https://newsapi.org/v2/everything?q=${query}&page=${page}&pageSize=10&apiKey=${API_KEY}`
+    );
+    const data = await response.json();
+    return data.articles;
+  } catch (error) {
+    console.log("Error fetching news by query:", error.message);
     return [];
   }
 };

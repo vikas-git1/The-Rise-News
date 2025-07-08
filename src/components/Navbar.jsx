@@ -30,6 +30,7 @@ export default function Navbar() {
   return (
     <nav className="bg-orange-500 sticky top-0 z-50 shadow">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Logo */}
         <Link
           to="/"
           className="hover:bg-orange-700/40 px-3 py-2 rounded-full transition text-xl font-bold text-white"
@@ -37,6 +38,7 @@ export default function Navbar() {
           The Rise
         </Link>
 
+        {/* Desktop Nav Items */}
         <ul className="hidden md:flex gap-7 text-white font-semibold text-base">
           {newsItems.map((item) => (
             <li
@@ -51,7 +53,9 @@ export default function Navbar() {
           ))}
         </ul>
 
+        {/* Search & Profile - Desktop */}
         <div className="hidden md:flex items-center gap-4">
+          {/* Search */}
           <div className="flex bg-white rounded-md overflow-hidden border border-white">
             <input
               type="text"
@@ -61,34 +65,42 @@ export default function Navbar() {
               onChange={(e) => setQuery(e.target.value)}
             />
             <button
-              onClick={handleSearch}
               className="bg-orange-600 text-white px-3 hover:bg-orange-700"
+              onClick={handleSearch}
             >
               <FaSearch />
             </button>
           </div>
+
+          {/* Profile */}
           {user ? (
-            <div
-              onClick={() => {
-                handleUserProfile();
-                setIsOpen(false);
-              }}
-              className="flex items-center gap-2 cursor-pointer hover:bg-orange-700/40 px-3 py-2 rounded-full transition"
-              title="Profile"
-            >
-              <div className="bg-orange-200  text-orange-700 rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg shadow">
-                {userProfile?.firstName?.[0]?.toUpperCase() || <FaUser />}
+            <div className="relative group">
+              <div
+                onClick={handleUserProfile}
+                className="flex items-center gap-2 cursor-pointer hover:bg-orange-700/40 px-3 py-2 rounded-full transition"
+                title="Profile"
+              >
+                <div className="bg-orange-200 text-orange-700 rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg shadow">
+                  {userProfile?.firstName?.[0]?.toUpperCase() || <FaUser />}
+                </div>
+                <span className="text-sm whitespace-nowrap text-white font-bold">
+                  Hello, {userProfile.firstName}
+                </span>
               </div>
-              <span className="text-sm  whitespace-nowrap text-white font-bold">
-                Hello, {userProfile.firstName}
-              </span>
+
+              {/* Dropdown */}
+              <div className="absolute right-0 mt-2 w-36 bg-white rounded shadow-md opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-200 z-50">
+                <div
+                  onClick={handleUserProfile}
+                  className="block px-4 py-2 text-sm text-orange-700 hover:bg-orange-100 cursor-pointer"
+                >
+                  View Profile
+                </div>
+              </div>
             </div>
           ) : (
             <button
-              onClick={() => {
-                handleLogin();
-                setIsOpen(false);
-              }}
+              onClick={handleLogin}
               className="text-sm px-4 py-1.5 rounded-full bg-white text-orange-600 font-semibold hover:bg-orange-100 shadow transition"
             >
               Login
@@ -96,6 +108,7 @@ export default function Navbar() {
           )}
         </div>
 
+        {/* Hamburger Icon */}
         <button
           className="md:hidden text-white"
           onClick={() => setIsOpen(!isOpen)}
@@ -104,6 +117,7 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Mobile Drawer */}
       {isOpen && (
         <div className="md:hidden px-4 pb-4 space-y-4 bg-orange-400 text-white">
           <ul className="flex flex-col gap-2">
@@ -120,6 +134,8 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
+          {/* Mobile Search */}
           <div className="flex border border-white rounded-md overflow-hidden bg-white">
             <input
               type="text"
@@ -135,10 +151,12 @@ export default function Navbar() {
               <FaSearch />
             </button>
           </div>
+
+          {/* Mobile Profile/Login */}
           {user ? (
             <div
               onClick={handleUserProfile}
-              className="flex items-center gap-2 cursor-pointer"
+              className="flex items-center gap-2 cursor-pointer hover:text-orange-100"
             >
               <FaUser />
               <span>Hello, {userProfile.firstName}</span>

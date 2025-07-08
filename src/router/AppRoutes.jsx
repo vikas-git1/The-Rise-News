@@ -4,16 +4,16 @@ import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Navbar from "../components/Navbar";
-import ProtectedRoutes from "../context/ProtectedRoute";
+import ProtectedRoutes from "../auth/ProtectedRoute";
 import NewsSource from "../pages/NewsSource";
 import TopNews from "../components/TopNews";
-import Nav2 from "../components/nav2";
+import SearchNews from "../pages/SearchNews";
+import Profile from "../pages/Profile";
 const AppRoutes = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
-        <Nav2 />
 
         <Routes>
           <Route
@@ -26,11 +26,20 @@ const AppRoutes = () => {
           />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
           <Route
             path="/source/:source"
             element={
               <ProtectedRoutes>
                 <NewsSource />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/search/:query"
+            element={
+              <ProtectedRoutes>
+                <SearchNews />
               </ProtectedRoutes>
             }
           />
