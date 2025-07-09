@@ -8,7 +8,8 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  // apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  apiKey: "AIzaSyAOTr1mQJvEFMi4-PvG65yGfyXtCkFh_uI",
   authDomain: "the-rise-news-app.firebaseapp.com",
   projectId: "the-rise-news-app",
   storageBucket: "the-rise-news-app.firebasestorage.app",
