@@ -10,16 +10,11 @@ const Home = () => {
   const loadMore = async () => {
     if (isLoading) return;
     setIsLoading(true);
-    try {
-      const newArticles = await fetchNewsBySource("bbc-news", page);
-      if (newArticles.length > 0) {
-        setNews((prev) => [...prev, ...newArticles]);
-      }
-    } catch (error) {
-      console.log("Error in fetching news at Home: ", error.message);
-    } finally {
-      setIsLoading(false);
+    const newArticles = await fetchNewsBySource("bbc-news", page);
+    if (newArticles.length > 0) {
+      setNews((prev) => [...prev, ...newArticles]);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -42,9 +37,9 @@ const Home = () => {
       }
     };
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   });
+
   return (
     <div className="min-h-screen bg-orange-50 py-8 px-6">
       <h1 className="text-3xl font-bold text-orange-600 mb-8 text-center">
@@ -52,7 +47,7 @@ const Home = () => {
       </h1>
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {news
-          .filter((article) => article.urlToImage) // ✅ keep only articles with images
+          .filter((article) => article.urlToImage)
           .map((article, i) => (
             <NewsCard key={i} article={article} />
           ))}
