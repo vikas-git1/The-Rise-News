@@ -13,7 +13,7 @@ const NewsSource = () => {
   const [news, setNews] = useState([]);
   const { source } = useParams();
   useEffect(() => {
-    fetchNewsBySource(source).then(setNews);
+    fetchNewsBySource(source, page).then(setNews);
   }, [source]);
   // console.log("Source From News item clicked", source);
 
