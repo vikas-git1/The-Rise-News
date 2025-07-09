@@ -7,7 +7,7 @@ export const fetchNewsBySource = async (source, page) => {
       `https://newsapi.org/v2/top-headlines?sources=${source}&pageSize=8&page=${page}&apiKey=${API_KEY}`
     );
     const data = await response.json();
-    console.log("***** fetch news by source Data****", data.articles);
+    // console.log("***** fetch news by source Data****", data.articles);
     return data.articles;
   } catch (error) {
     console.log("Error in fetching news by source -", error.message);
@@ -35,7 +35,7 @@ export const fetchTopNews = async () => {
       `https://newsapi.org/v2/top-headlines?language=en&pageSize=10&apiKey=${API_KEY}`
     );
     const data = await response.json();
-    console.log("🌍 Top Global News:", data.articles);
+    // console.log("🌍 Top Global News:", data.articles);
     return data.articles;
   } catch (error) {
     console.log("Error fetching top news:", error.message);
