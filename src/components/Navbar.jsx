@@ -46,7 +46,9 @@ export default function Navbar() {
             <li
               key={item.id}
               className="cursor-pointer relative px-1 transition"
-              onClick={() => navigate(`/source/${item.path}`)}
+              onClick={() =>
+                user ? navigate(`/source/${item.path}`) : navigate("/login")
+              }
             >
               <span className="hover:underline underline-offset-8 decoration-2 decoration-orange-100 transition-all duration-200">
                 {item.newsName}
@@ -132,7 +134,7 @@ export default function Navbar() {
               <li
                 key={item.id}
                 onClick={() => {
-                  navigate(`/source/${item.path}`);
+                  user ? navigate(`/source/${item.path}`) : navigate("/login");
                   setIsOpen(false);
                 }}
                 className="cursor-pointer hover:text-orange-100"
@@ -169,12 +171,15 @@ export default function Navbar() {
               <span>Hello, {userProfile.firstName}</span>
             </div>
           ) : (
-            <button
-              onClick={handleLogin}
-              className="text-sm px-3 py-1 rounded-md bg-white text-orange-600 font-semibold hover:bg-orange-100"
-            >
-              Login
-            </button>
+            <>
+              <button
+                onClick={handleLogin}
+                className="text-sm px-3 py-1 rounded-md bg-white text-orange-600 font-semibold hover:bg-orange-100"
+              >
+                Login
+              </button>
+              <span>Welcome User</span>
+            </>
           )}
         </div>
       )}
