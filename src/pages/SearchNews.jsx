@@ -15,7 +15,9 @@ const SearchNews = () => {
     setIsLoading(true);
     try {
       const newArticles = await fetchNewsByQuery(query, page);
-      if (Array.isArray(newArticles) && newArticles > 0) {
+      console.log("New articles in SearchNews:", newArticles);
+
+      if (Array.isArray(newArticles) && newArticles.length > 0) {
         setNews((prev) => [...prev, ...newArticles]);
       }
     } catch (error) {
@@ -28,7 +30,7 @@ const SearchNews = () => {
   // Fetch more when page changes
   useEffect(() => {
     loadMore();
-  }, [page]);
+  }, [query, page]);
 
   // Reset on query change
   useEffect(() => {
@@ -51,6 +53,8 @@ const SearchNews = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isLoading]);
+
+  console.log("News fetched from search query: ", news);
 
   return (
     <div className="min-h-screen bg-orange-50 py-8 px-6">
