@@ -26,7 +26,7 @@ const TopNews = () => {
         style={{ height: "320px" }}
       >
         {news
-          .filter((article) => article.urlToImage)
+          // .filter((article) => article.urlToImage)
           .slice(0, 10)
           .map((article, i) => (
             <SwiperSlide key={i}>
