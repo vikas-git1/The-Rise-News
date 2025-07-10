@@ -57,11 +57,12 @@ const SearchNews = () => {
       </h1>
 
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {news
-          .filter((article) => article.urlToImage)
-          .map((article, i) => (
-            <NewsCard key={i} article={article} />
-          ))}
+        /* Checks is news an array and only then it procede to add filter on
+        news */
+        {Array.isArray(news) &&
+          news
+            .filter((article) => article.urlToImage)
+            .map((article, i) => <NewsCard key={i} article={article} />)}
       </div>
 
       {isLoading && <Loader />}

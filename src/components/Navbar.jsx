@@ -18,9 +18,11 @@ export default function Navbar() {
   ];
 
   const handleSearch = () => {
-    if (query.trim()) {
+    if (user && query.trim()) {
       navigate(`/search/${query}`);
       setQuery("");
+    } else {
+      navigate("/login");
     }
   };
 
@@ -99,12 +101,17 @@ export default function Navbar() {
               </div>
             </div>
           ) : (
-            <button
-              onClick={handleLogin}
-              className="text-sm px-4 py-1.5 rounded-full bg-white text-orange-600 font-semibold hover:bg-orange-100 shadow transition"
-            >
-              Login
-            </button>
+            <>
+              <button
+                onClick={handleLogin}
+                className="text-sm px-4 py-1.5 rounded-full bg-white text-orange-600 font-semibold hover:bg-orange-100 shadow transition"
+              >
+                Login
+              </button>
+              <span className="text-sm whitespace-nowrap text-white font-bold">
+                Welcome User
+              </span>
+            </>
           )}
         </div>
 
