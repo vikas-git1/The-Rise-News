@@ -9,12 +9,15 @@ import NewsSource from "../pages/NewsSource";
 import TopNews from "../components/TopNews";
 import SearchNews from "../pages/SearchNews";
 import Profile from "../pages/Profile";
+import CategorySection from "../components/CategorySection";
+import CategoryNews from "../pages/CategoryNews";
 const AppRoutes = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
-        <TopNews />
+        <CategorySection />
+
         <Routes>
           <Route
             path="/"
@@ -40,6 +43,14 @@ const AppRoutes = () => {
             element={
               <ProtectedRoutes>
                 <SearchNews />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/category/:category"
+            element={
+              <ProtectedRoutes>
+                <CategoryNews />
               </ProtectedRoutes>
             }
           />
