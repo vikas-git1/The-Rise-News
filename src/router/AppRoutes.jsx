@@ -11,6 +11,7 @@ import SearchNews from "../pages/SearchNews";
 import Profile from "../pages/Profile";
 import CategorySection from "../components/CategorySection";
 import CategoryNews from "../pages/CategoryNews";
+import NotFound from "../pages/NotFound";
 const AppRoutes = () => {
   return (
     <>
@@ -54,6 +55,7 @@ const AppRoutes = () => {
               </ProtectedRoutes>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
