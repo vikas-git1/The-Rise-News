@@ -1,4 +1,5 @@
-const API_KEY = "d3c3cf10968c485c95a4b7c13bc33cee";
+// const API_KEY = "d3c3cf10968c485c95a4b7c13bc33cee";
+const API_KEY = "eb28b8cd0e8745b9ae6134934c42e877";
 
 export const fetchNewsBySource = async (source, page) => {
   try {

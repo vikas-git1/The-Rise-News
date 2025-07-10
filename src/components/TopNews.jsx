@@ -25,14 +25,16 @@ const TopNews = () => {
         className="w-full"
         style={{ height: "320px" }}
       >
-        {news
-          // .filter((article) => article.urlToImage)
-          .slice(0, 10)
-          .map((article, i) => (
-            <SwiperSlide key={i}>
-              <TopNewsCard article={article} />
-            </SwiperSlide>
-          ))}
+        {/* Additional Contion to check if news is an array */}
+        {Array.isArray(news) &&
+          news
+            .filter((article) => article.urlToImage)
+            .slice(0, 10)
+            .map((article, i) => (
+              <SwiperSlide key={i}>
+                <TopNewsCard article={article} />
+              </SwiperSlide>
+            ))}
       </Swiper>
     </div>
   );

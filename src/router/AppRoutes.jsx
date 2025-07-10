@@ -9,13 +9,12 @@ import NewsSource from "../pages/NewsSource";
 import TopNews from "../components/TopNews";
 import SearchNews from "../pages/SearchNews";
 import Profile from "../pages/Profile";
-import CategorySection from "../components/CategorySection";
 const AppRoutes = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
-        <CategorySection />
+        <TopNews />
         <Routes>
           <Route
             path="/"
