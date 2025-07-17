@@ -4,13 +4,17 @@ const fetch = require("node-fetch");
 require("dotenv").config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
 
-// Fetch Top Headlines
+// Test root route
+app.get("/", (req, res) => {
+  res.send("✅ Backend is working!");
+});
+
 app.get("/api/top-news", async (req, res) => {
   try {
     const response = await fetch(
@@ -23,7 +27,6 @@ app.get("/api/top-news", async (req, res) => {
   }
 });
 
-// Fetch by Source
 app.get("/api/news", async (req, res) => {
   const { source = "bbc-news", page = 1 } = req.query;
   try {
@@ -37,7 +40,6 @@ app.get("/api/news", async (req, res) => {
   }
 });
 
-// Fetch by Query (Search)
 app.get("/api/search", async (req, res) => {
   const { query = "India", page = 1 } = req.query;
   try {
@@ -54,5 +56,5 @@ app.get("/api/search", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Backend server running at http://localhost:${PORT}`);
+  console.log(`✅ Backend running at http://localhost:${PORT}`);
 });
