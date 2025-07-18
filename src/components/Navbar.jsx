@@ -69,7 +69,7 @@ export default function Navbar() {
               onChange={(e) => setQuery(e.target.value)}
             />
             <button
-              className="bg-orange-600 text-white px-3 hover:bg-orange-700"
+              className="bg-orange-600 text-white px-3 hover:bg-orange-700 cursor-pointer"
               onClick={handleSearch}
             >
               <FaSearch />
@@ -106,11 +106,11 @@ export default function Navbar() {
             <>
               <button
                 onClick={handleLogin}
-                className="text-sm px-4 py-1.5 rounded-full bg-white text-orange-600 font-semibold hover:bg-orange-100 shadow transition"
+                className="text-sm px-4 py-1.5 rounded-full bg-white text-orange-600 font-semibold hover:bg-orange-100 shadow transition cursor-pointer"
               >
                 Login
               </button>
-              <span className="text-sm whitespace-nowrap text-white font-bold">
+              <span className="text-sm whitespace-nowrap text-white font-bold ">
                 Welcome User
               </span>
             </>
@@ -154,7 +154,7 @@ export default function Navbar() {
               onChange={(e) => setQuery(e.target.value)}
             />
             <button
-              className="bg-orange-600 text-white px-3 hover:bg-orange-700"
+              className="bg-orange-600 text-white px-3 hover:bg-orange-700 cursor-pointer"
               onClick={handleSearch}
             >
               <FaSearch />
@@ -174,7 +174,7 @@ export default function Navbar() {
             <>
               <button
                 onClick={handleLogin}
-                className="text-sm px-3 py-1 rounded-md bg-white text-orange-600 font-semibold hover:bg-orange-100"
+                className="text-sm px-3 py-1 rounded-md bg-white text-orange-600 font-semibold hover:bg-orange-100 cursor-pointer"
               >
                 Login
               </button>

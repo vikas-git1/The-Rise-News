@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const categories = [
   "Politics",
@@ -12,23 +13,29 @@ const categories = [
 ];
 
 const CategorySection = () => {
+  const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
   return (
-    <div className="bg-orange-100 shadow-sm border-t border-orange-200 overflow-x-auto">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex gap-3 w-max">
+    <div className="bg-orange-50 border-t border-orange-200 shadow-inner overflow-x-auto">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-center items-center gap-4 w-max md:w-full">
         {categories.map((cat, index) => {
           const active = location.pathname.includes(cat.toLowerCase());
           return (
             <button
               key={index}
-              className={`text-sm font-medium px-4 py-1.5 rounded-full border transition ${
+              className={`text-sm font-semibold px-5 py-2 rounded-full whitespace-nowrap transition-all duration-200 shadow-sm border cursor-pointer 
+              ${
                 active
-                  ? "bg-orange-600 text-white border-orange-600"
-                  : "bg-white text-orange-700 border-orange-300 hover:bg-orange-200"
+                  ? "bg-orange-600 text-white border-orange-600 shadow-md"
+                  : "bg-white text-orange-700 border-orange-300 hover:bg-orange-100 hover:text-orange-800"
               }`}
-              onClick={() => navigate(`/category/${cat.toLowerCase()}`)}
+              onClick={() =>
+                user
+                  ? navigate(`/category/${cat.toLowerCase()}`)
+                  : navigate("/login")
+              }
             >
               {cat}
             </button>
@@ -38,4 +45,5 @@ const CategorySection = () => {
     </div>
   );
 };
+
 export default CategorySection;
