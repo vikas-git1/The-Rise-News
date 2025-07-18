@@ -20,7 +20,7 @@ const TopNewsCard = ({ article }) => {
       </div>
 
       {/* Content */}
-      <div className="w-full md:w-1/2 flex flex-col justify-between p-5 bg-white/90">
+      <div className="w-full md:w-1/2 flex flex-col justify-between p-5 rounded-2xl bg-white/90">
         <div>
           <h2 className="text-2xl font-bold text-orange-900 mb-2 leading-tight line-clamp-2 drop-shadow-sm">
             {title}
