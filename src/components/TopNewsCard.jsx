@@ -9,43 +9,43 @@ const TopNewsCard = ({ article }) => {
   const formattedDate = new Date(publishedAt).toLocaleString();
 
   return (
-    <div className="w-[95%]  max-w-7xl h-[300px] mx-auto my-4 flex flex-col md:flex-row bg-gradient-to-br from-orange-100 via-white to-orange-50 border border-orange-300 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-      {/* Left Image */}
-      <div className="w-full md:w-1/2 h-[320px]">
+    <div className="w-[95%] max-w-7xl mx-auto my-6 flex flex-col md:flex-row rounded-2xl bg-gradient-to-br from-orange-100 via-white to-orange-50 border border-orange-200 shadow-[10px_10px_20px_rgba(255,156,50,0.3)] hover:shadow-[0px_0px_30px_5px_rgba(255,102,0,0.4)] transition-all duration-300 transform hover:-translate-y-1">
+      {/* Image */}
+      <div className="w-full md:w-1/2 h-[200px] md:h-[300px] overflow-hidden rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none">
         <img
           src={urlToImage}
           alt={title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-100 hover:scale-105 transition-transform duration-500"
         />
       </div>
 
-      {/* Right Content */}
-      <div className="w-full md:w-1/2 flex flex-col justify-between p-6 bg-white/80">
+      {/* Content */}
+      <div className="w-full md:w-1/2 flex flex-col justify-between p-5 bg-white/90">
         <div>
-          <h2 className="text-2xl font-extrabold mb-3 text-orange-900 leading-tight line-clamp-2">
+          <h2 className="text-2xl font-bold text-orange-900 mb-2 leading-tight line-clamp-2 drop-shadow-sm">
             {title}
           </h2>
-          <p className="text-base text-gray-800 mb-4 line-clamp-3">
+          <p className="text-sm text-gray-700 mb-3 line-clamp-3">
             {description}
           </p>
-          <p className="text-xs text-gray-600 italic mb-2">
+          <p className="text-xs text-gray-500 italic">
             By {author || "Unknown"} • {formattedDate}
           </p>
         </div>
 
-        {/* Buttons Footer */}
-        <div className="flex justify-between items-center mt-4 pt-3 border-t border-orange-200">
+        {/* Footer */}
+        <div className="flex justify-between items-center mt-5 border-t pt-3 border-orange-200">
           <a
             href={url}
             target="_blank"
             rel="noreferrer"
-            className="bg-orange-500 hover:bg-orange-600 focus:ring-2 focus:ring-orange-300 text-white px-5 py-2 rounded-lg text-sm font-semibold shadow transition-all duration-200"
+            className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300"
           >
             Read Article
           </a>
           <button
             onClick={() => setBookmarked(!bookmarked)}
-            className={`ml-3 p-2 rounded-full transition-colors duration-200 ${
+            className={`ml-3 p-2 rounded-full transition-colors duration-300 ${
               bookmarked
                 ? "bg-orange-200 text-orange-700"
                 : "bg-orange-50 text-orange-500"

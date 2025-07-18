@@ -14,7 +14,7 @@ const TopNews = () => {
   }, []);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full md-[300px] mb-[-45px]">
       <Swiper
         modules={[Autoplay, Navigation]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -23,7 +23,7 @@ const TopNews = () => {
         spaceBetween={20}
         slidesPerView={1}
         className="w-full"
-        style={{ height: "320px" }}
+        // style={{ height: "450px" }}
       >
         {/* Additional Contion to check if news is an array */}
         {Array.isArray(news) &&
